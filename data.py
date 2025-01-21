@@ -3,7 +3,7 @@ def Get_sh_list():
         with open('data/sh_list.txt', 'r', encoding='utf-8') as file:
             lines = file.readlines()
             return [line.strip() for line in lines]
-    except Exiption as e:
+    except Exception as e:
                     print(e)
 
 def Set_sh_list(sh_list = []):
