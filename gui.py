@@ -36,7 +36,7 @@ class GUI_status:
         """
         self.frame_set = frame
         self.frame_table = []
-        for i in range(frame, frame + 30):
+        for i in range(frame, frame + 10):
             if(i > (len(self.table) - 1)):
                 break
             self.frame_table.append(self.table[i])
