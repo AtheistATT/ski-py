@@ -39,6 +39,11 @@ class Core():
                     return
                 main_gui.curX -=1
                 main_gui.hint2 = main_gui.contextHint[main_gui.curX]
+            case keys.ENTER:
+                if(main_gui.curX == 1):
+                    n = gui.input_text("Введите Фамилию >>>")
+                    main_gui.table[main_gui.curY + main_gui.frame_set][1] = n
+                    gui.data.Set_table(main_gui.table)
 
 
 

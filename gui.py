@@ -79,3 +79,7 @@ def GUI_show(status: GUI_status):
     console.print(status.hint1)
     console.print(table)
     console.print(status.hint2)
+
+
+def input_text(text):
+    return console.input("[green]" + text)
