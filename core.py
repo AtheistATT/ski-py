@@ -33,10 +33,12 @@ class Core():
                 if(main_gui.curX == 6):
                     return
                 main_gui.curX += 1
+                main_gui.hint2 = main_gui.contextHint[main_gui.curX]
             case keys.LEFT:
                 if(main_gui.curX == 0):
                     return
                 main_gui.curX -=1
+                main_gui.hint2 = main_gui.contextHint[main_gui.curX]
 
 
 
