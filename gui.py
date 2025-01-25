@@ -18,7 +18,7 @@ class GUI_status:
     frame_set = 0
     curX = 0 #Позиция указателя
     curY = 0
-    hint1 = "Глобальный контекст"
+    hint1 = "[green]S[white]:Редактор списка школ."
     hint2 = ""
     contextHint = [
             "Хоткеи Номера",

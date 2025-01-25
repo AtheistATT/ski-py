@@ -44,6 +44,8 @@ class Core():
                     n = gui.input_text("Введите Фамилию >>>")
                     main_gui.table[main_gui.curY + main_gui.frame_set][1] = n
                     gui.data.Set_table(main_gui.table)
+            case 's'|'ы':
+                gui.input_text("hi")
 
 
 
