@@ -1,5 +1,7 @@
 from getkey import getkey, keynames, keys
 from rich import table
+from datetime import datetime, timedelta
+import data
 import gui
 
 main_gui = gui.GUI_status()
@@ -87,7 +89,18 @@ class Core():
                     main_gui.table[index][0] = str(first_num)
                     first_num += 1
                 gui.data.Set_table(main_gui.table)
-
+            case 't'|'е':
+               f_start = gui.input_text("введите 6 чисел:часы, минуты и секуды для формирования времени начала отсчета>>>")
+               add_time = gui.input_text("Введите прибавляемое время в секундах>>>")
+               time_format = "%H%M%S"
+               time_f_start = datetime.strptime(f_start, time_format).time()
+               time_f_start = datetime.combine(datetime.today(), time_f_start)
+               start_pos = main_gui.frame_set + main_gui.curY
+               end_pos = len(main_gui.table)
+               for index in range(start_pos,end_pos):
+                   main_gui.table[index][3] = time_f_start.strftime("%H:%M:%S")
+                   time_f_start += timedelta(seconds=int(add_time))
+               gui.data.Set_table(main_gui.table)
 
 
 
