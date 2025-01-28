@@ -5,6 +5,29 @@ import gui
 main_gui = gui.GUI_status()
 gui.GUI_show(main_gui)
 
+def is_int(s):
+    try:
+        int(s)
+        return True
+    except ValueError:
+        return False
+
+
+def sh_list_editor():
+
+    while True:
+        for index, value in enumerate(main_gui.sh_list):
+            print(f"{index + 1}. {value}")
+        u_input = input("Для добавление школы введите название.\nДля Удаление введитете порядковый номер.\nДля выхода введите 0\n>>>")
+        if is_int(u_input):
+            if int(u_input) == 0:
+                break
+            main_gui.sh_list.pop(int(u_input) - 1)
+        else:
+            main_gui.sh_list.append(u_input)
+
+    gui.data.Set_sh_list(main_gui.sh_list)
+
 class Core():
     def OnKeyPressed(self, key):
         
@@ -44,8 +67,23 @@ class Core():
                     n = gui.input_text("Введите Фамилию >>>")
                     main_gui.table[main_gui.curY + main_gui.frame_set][1] = n
                     gui.data.Set_table(main_gui.table)
+                if main_gui.curX == 2:
+                    for index, value in enumerate(main_gui.sh_list):
+                        print(f"{index + 1}. {value}")
+                    u_input  = gui.input_text("Для вставки введите порядковый номер школы\n>>>")
+                    main_gui.table[main_gui.frame_set + main_gui.curY][2] = main_gui.sh_list[(int(u_input) - 1)]
+                    gui.data.Set_table(main_gui.table)
             case 's'|'ы':
-                gui.input_text("hi")
+                sh_list_editor()
+            case 'n'|'т':
+                first_num = int(gui.input_text("Введите начальное число>>>"))
+                start_pos = main_gui.frame_set + main_gui.curY
+                end_pos = len(main_gui.table)
+                for index in range(start_pos, end_pos):
+                    main_gui.table[index][0] = str(first_num)
+                    first_num += 1
+                gui.data.Set_table(main_gui.table)
+
 
 
 

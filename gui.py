@@ -18,12 +18,12 @@ class GUI_status:
     frame_set = 0
     curX = 0 #Позиция указателя
     curY = 0
-    hint1 = "[green]S[white]:Редактор списка школ."
+    hint1 = ""
     hint2 = ""
     contextHint = [
-            "Хоткеи Номера",
-     "Хоткеи Фамилии",
-     "Хоткеи Школа",
+            "[green]N[white]:начать нумирацию с этой точке",
+            "[green]Enter[white]: для редактирования фамилий.",
+     "[green]S[white]:Редактор списка школ.\n[green]Enter[white]:добавить школу из списка.",
      "Хоткеи время старта",
      "Хоткеи время финиша",
      "Хоткеи чистое время",
@@ -83,3 +83,5 @@ def GUI_show(status: GUI_status):
 
 def input_text(text):
     return console.input("[green]" + text)
+
+
