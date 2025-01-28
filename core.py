@@ -93,8 +93,7 @@ class Core():
                f_start = gui.input_text("введите 6 чисел:часы, минуты и секуды для формирования времени начала отсчета>>>")
                add_time = gui.input_text("Введите прибавляемое время в секундах>>>")
                time_format = "%H%M%S"
-               time_f_start = datetime.strptime(f_start, time_format).time()
-               time_f_start = datetime.combine(datetime.today(), time_f_start)
+               time_f_start = datetime.strptime(f_start, time_format)
                start_pos = main_gui.frame_set + main_gui.curY
                end_pos = len(main_gui.table)
                for index in range(start_pos,end_pos):
