@@ -73,6 +73,10 @@ class Core():
                     u_input  = gui.input_text("Для вставки введите порядковый номер школы\n>>>")
                     main_gui.table[main_gui.frame_set + main_gui.curY][2] = main_gui.sh_list[(int(u_input) - 1)]
                     gui.data.Set_table(main_gui.table)
+                if main_gui.curX == 6:
+                    n = gui.input_text("Введите текст метки>>>")
+                    main_gui.table[main_gui.frame_set + main_gui.curY][6] = n
+                    gui.data.Set_table(main_gui.table)
             case 's'|'ы':
                 sh_list_editor()
             case 'n'|'т':

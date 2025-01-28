@@ -27,7 +27,7 @@ class GUI_status:
      "Хоткеи время старта",
      "Хоткеи время финиша",
      "Хоткеи чистое время",
-     "Хоткеи метка"
+     "[green]Enter[white]:редактировать метку"
             ]
     def __init__(self) -> None:
         self.sh_list = data.Get_sh_list()
