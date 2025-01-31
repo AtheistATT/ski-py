@@ -1,4 +1,5 @@
 from getkey import getkey, keynames, keys
+import pdb
 from rich import table
 from datetime import datetime, timedelta
 import data
@@ -34,6 +35,8 @@ class Core():
     def OnKeyPressed(self, key):
         
         
+        gui.GUI_show(main_gui)
+
         match key:
             case keys.ESC:
                 exit()
@@ -79,6 +82,10 @@ class Core():
                     n = gui.input_text("Введите текст метки>>>")
                     main_gui.table[main_gui.frame_set + main_gui.curY][6] = n
                     gui.data.Set_table(main_gui.table)
+                if main_gui.curX == 4:
+                    t = gui.input_text("Введите 8 цифр финишного времени без пробелов>>>")
+                    main_gui.table[main_gui.frame_set + main_gui.curY][4] = f"{t[0:2]}:{t[2:4]}:{t[4:6]}.{t[6:8]}"
+                    gui.data.Set_table(main_gui.table)
             case 's'|'ы':
                 sh_list_editor()
             case 'n'|'т':
@@ -100,7 +107,12 @@ class Core():
                    main_gui.table[index][3] = time_f_start.strftime("%H:%M:%S")
                    time_f_start += timedelta(seconds=int(add_time))
                gui.data.Set_table(main_gui.table)
-
+            case 'a'|'ф':
+                main_gui.table.insert(main_gui.frame_set + main_gui.curY, ["#", "Имя", "школа", "0000","0000", "0000","Метка"])
+                gui.data.Set_table(main_gui.table)
+            case 'd'|'в':
+                main_gui.table.pop(main_gui.frame_set + main_gui.curY)
+                gui.data.Set_table(main_gui.table)
 
 
         

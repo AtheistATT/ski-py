@@ -2,6 +2,7 @@
 Этот модуль предназначен для вывода псевдографики в терминале для программы ski-py.
 """
 from rich import console, table
+import pdb
 from rich.console import Console
 from rich.table import Table
 import data
@@ -18,14 +19,14 @@ class GUI_status:
     frame_set = 0
     curX = 0 #Позиция указателя
     curY = 0
-    hint1 = ""
+    hint1 = "[green]A[white]: Создать запись.\n[green]D[white]:удалить запись."
     hint2 = ""
     contextHint = [
-            "[green]N[white]:начать нумирацию с этой точке",
+            "[green]N[white]:начать нумерацию с этой точки",
             "[green]Enter[white]: для редактирования фамилий.",
      "[green]S[white]:Редактор списка школ.\n[green]Enter[white]:добавить школу из списка.",
      "[green]T[white]:начать просчет стартового времени с текущей позиции.",
-     "Хоткеи время финиша",
+     "[green]Enter[white]:ввести время финиша.",
      "Хоткеи чистое время",
      "[green]Enter[white]:редактировать метку"
             ]
@@ -34,6 +35,7 @@ class GUI_status:
         self.table = data.Get_table()
         self.set_frame()
         self.hint2 = self.contextHint[0]
+        
     
     def set_frame(self,frame = 0):
         """
@@ -50,11 +52,12 @@ class GUI_status:
 
 console = Console()
 
-def GUI_show(status: GUI_status):
+def GUI_show(status: GUI_status,):
     """
     Функция отображает интерфейс программы в зависимости от объекта переменной GUI_status
     """
     console.clear()
+    status.set_frame(status.frame_set)
     table = Table(title=status.title)
 
     table.add_column("Номер")
@@ -64,6 +67,7 @@ def GUI_show(status: GUI_status):
     table.add_column("Время финиша")
     table.add_column("Чистое время")
     table.add_column("Метка")
+
     
     for j, v in enumerate(status.frame_table):
         list = []
@@ -79,8 +83,7 @@ def GUI_show(status: GUI_status):
     console.print(status.hint1)
     console.print(table)
     console.print(status.hint2)
-
-
+    
 def input_text(text):
     return console.input("[green]" + text)
 
