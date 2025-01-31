@@ -41,7 +41,7 @@ class Core():
             case keys.ESC:
                 exit()
             case keys.DOWN:
-                if(main_gui.frame_set + main_gui.curY == len(main_gui.table) - 1):
+                if(main_gui.frame_set + main_gui.curY == len(main_gui.table) - 1|main_gui.curY == len(main_gui.table) - 1):
                   return 
                 if(main_gui.curY == 9):
                    main_gui.set_frame(main_gui.frame_set + 1)
@@ -111,8 +111,12 @@ class Core():
                 main_gui.table.insert(main_gui.frame_set + main_gui.curY, ["#", "Имя", "школа", "0000","0000", "0000","Метка"])
                 gui.data.Set_table(main_gui.table)
             case 'd'|'в':
+                if len(main_gui.table) == 0:
+                    return
                 main_gui.table.pop(main_gui.frame_set + main_gui.curY)
                 gui.data.Set_table(main_gui.table)
+                if(main_gui.curY != 0):
+                    main_gui.curY -=1 
 
 
         
