@@ -25,9 +25,9 @@ def Get_table():
 
     return main_table
 
-def Set_table(main_table = []):
+def Set_table(main_table = [], file_name = 'data/data.txt'):
     try:
-        with open('data/data.txt', 'w', encoding='utf=8') as file:
+        with open(file_name, 'w', encoding='utf=8') as file:
             for sublist in main_table:
                 file.write(', '.join(sublist) + '\n')
     except Exception as e:
