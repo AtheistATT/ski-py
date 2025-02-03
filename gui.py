@@ -19,7 +19,7 @@ class GUI_status:
     frame_set = 0
     curX = 0 #Позиция указателя
     curY = 0
-    hint1 = "[green]A[white]: Создать запись.\n[green]D[white]:удалить запись."
+    hint1 = "[green]A[white]: Создать запись.\n[green]D[white]:удалить запись.\n[green]G[white]: создать протокол"
     hint2 = ""
     buf = ""
     contextHint = [

@@ -4,6 +4,7 @@ from rich import table
 from datetime import datetime, timedelta
 import data
 import gui
+import report
 
 main_gui = gui.GUI_status()
 gui.GUI_show(main_gui)
@@ -146,6 +147,14 @@ class Core():
                 main_gui.buf = main_gui.table[main_gui.frame_set + main_gui.curY][6]
             case 'v' | 'м':
                 main_gui.table[main_gui.frame_set + main_gui.curY][6] = main_gui.buf
+                gui.data.Set_table(main_gui.table)
+            case 'g' | 'п':
+                r_type = gui.input_text('Введите номер типа протокола:\n1.Стартовый.\n2.Комндный.\n3.Личный.\n>>>')
+                pos_mark = gui.input_text('Включить только записи содержащие метку>>>')
+                neg_mark = gui.input_text('Исключить записи содержащие метку>>>')
+                if(r_type == '1'):
+                    report.new_report(main_gui.table, r_type, pos_mark, neg_mark)
+                    
 
 
 
