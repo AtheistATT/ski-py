@@ -21,14 +21,15 @@ class GUI_status:
     curY = 0
     hint1 = "[green]A[white]: Создать запись.\n[green]D[white]:удалить запись."
     hint2 = ""
+    buf = ""
     contextHint = [
             "[green]N[white]:начать нумерацию с этой точки",
             "[green]Enter[white]: для редактирования фамилий.",
      "[green]S[white]:Редактор списка школ.\n[green]Enter[white]:добавить школу из списка.",
      "[green]T[white]:начать просчет стартового времени с текущей позиции.",
      "[green]Enter[white]:ввести время финиша.",
-     "Хоткеи чистое время",
-     "[green]Enter[white]:редактировать метку"
+     "[green]Enter[white]:Просчитать чистое время",
+     "[green]Enter[white]:редактировать метку\n[green]C[white]:скопировать метку в буфер\n[green]V[white]:вставить метку в буфер"
             ]
     def __init__(self) -> None:
         self.sh_list = data.Get_sh_list()
@@ -59,6 +60,7 @@ def GUI_show(status: GUI_status,):
     console.clear()
     status.set_frame(status.frame_set)
     table = Table(title=status.title)
+
 
     table.add_column("Номер")
     table.add_column("Фамилия")

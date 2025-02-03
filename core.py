@@ -31,6 +31,25 @@ def sh_list_editor():
 
     gui.data.Set_sh_list(main_gui.sh_list)
 
+def time_dif(start , finish):
+    format1 = "%H:%M:%S"
+    format2 = "%H:%M:%S.%f"
+
+    time_start = datetime.strptime(start, format1)
+    time_finish = datetime.strptime(finish, format2)
+
+    time_difference = time_finish - time_start
+
+    total_sec = int(time_difference.total_seconds())
+    miliseconds = int(time_difference.microseconds/10000)
+    hours, remainder = divmod(total_sec, 3600)
+    minuts, seconds = divmod(remainder, 60)
+
+    result = f"{hours}:{minuts}:{seconds}.{miliseconds}"
+    return result
+
+
+
 class Core():
     def OnKeyPressed(self, key):
         
@@ -86,6 +105,12 @@ class Core():
                     t = gui.input_text("Введите 8 цифр финишного времени без пробелов>>>")
                     main_gui.table[main_gui.frame_set + main_gui.curY][4] = f"{t[0:2]}:{t[2:4]}:{t[4:6]}.{t[6:8]}"
                     gui.data.Set_table(main_gui.table)
+                if main_gui.curX == 5:
+                    for row in main_gui.table:
+                        if(row[3] == "0000" or row[4] == "0000"):
+                            continue
+                        row[5] = time_dif(row[3], row[4])
+                        gui.data.Set_table(main_gui.table)
             case 's'|'ы':
                 sh_list_editor()
             case 'n'|'т':
@@ -117,6 +142,11 @@ class Core():
                 gui.data.Set_table(main_gui.table)
                 if(main_gui.curY != 0):
                     main_gui.curY -=1 
+            case 'c' | 'с':
+                main_gui.buf = main_gui.table[main_gui.frame_set + main_gui.curY][6]
+            case 'v' | 'м':
+                main_gui.table[main_gui.frame_set + main_gui.curY][6] = main_gui.buf
+
 
 
         
