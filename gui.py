@@ -76,8 +76,11 @@ def GUI_show(status: GUI_status,):
         temp = ""
         for i, x in enumerate(v):
             temp = "[white on black]"
-            if(j == status.curY and i == status.curX):
-                temp = "[black on white]"
+            if(j == status.curY):
+                if i == status.curX:
+                    temp = "[black on white]"
+                else:
+                    temp = "[black on light_green]"
             list.append(temp + x)
 
         table.add_row(list[0], list[1],list[2],list[3],list[4],list[5],list[6])
