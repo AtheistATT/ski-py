@@ -46,7 +46,7 @@ def time_dif(start , finish):
     hours, remainder = divmod(total_sec, 3600)
     minuts, seconds = divmod(remainder, 60)
 
-    result = f"{hours}:{minuts}:{seconds}.{miliseconds}"
+    result = f"{hours:02}:{minuts:02}:{seconds:02}.{miliseconds:02}"
     return result
 
 
@@ -103,7 +103,11 @@ class Core():
                     main_gui.table[main_gui.frame_set + main_gui.curY][6] = n
                     gui.data.Set_table(main_gui.table)
                 if main_gui.curX == 4:
-                    t = gui.input_text("Введите 8 цифр финишного времени без пробелов>>>")
+                    t = gui.input_text(f"Введите 8 цифр финишного времени без пробелов\nБуфер:{main_gui.time_buf}\n>>>>>>")
+                    if len(t) < 8:
+                        l = len(t)
+                        t = main_gui.time_buf[:-l] + t
+                    main_gui.time_buf = t
                     main_gui.table[main_gui.frame_set + main_gui.curY][4] = f"{t[0:2]}:{t[2:4]}:{t[4:6]}.{t[6:8]}"
                     gui.data.Set_table(main_gui.table)
                 if main_gui.curX == 5:

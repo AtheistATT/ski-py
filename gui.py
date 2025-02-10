@@ -22,6 +22,7 @@ class GUI_status:
     hint1 = "[green]A[white]: Создать запись.\n[green]D[white]:удалить запись.\n[green]G[white]: создать протокол"
     hint2 = ""
     buf = ""
+    time_buf = "00000000"
     contextHint = [
             "[green]N[white]:начать нумерацию с этой точки",
             "[green]Enter[white]: для редактирования фамилий.",
