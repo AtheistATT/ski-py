@@ -61,7 +61,7 @@ class Core():
             case keys.ESC:
                 exit()
             case keys.DOWN:
-                if(main_gui.frame_set + main_gui.curY == len(main_gui.table) - 1|main_gui.curY == len(main_gui.table) - 1):
+                if(main_gui.frame_set + main_gui.curY == len(main_gui.table) - 1 or main_gui.curY == len(main_gui.table) - 1):
                   return 
                 if(main_gui.curY == 9):
                    main_gui.set_frame(main_gui.frame_set + 1)
@@ -104,6 +104,8 @@ class Core():
                     gui.data.Set_table(main_gui.table)
                 if main_gui.curX == 4:
                     t = gui.input_text(f"Введите 8 цифр финишного времени без пробелов\nБуфер:{main_gui.time_buf}\n>>>>>>")
+                    if t == '':
+                        t = main_gui.time_buf
                     if len(t) < 8:
                         l = len(t)
                         t = main_gui.time_buf[:-l] + t
@@ -153,11 +155,10 @@ class Core():
                 main_gui.table[main_gui.frame_set + main_gui.curY][6] = main_gui.buf
                 gui.data.Set_table(main_gui.table)
             case 'g' | 'п':
-                r_type = gui.input_text('Введите номер типа протокола:\n1.Стартовый.\n2.Комндный.\n3.Личный.\n>>>')
+                r_type = gui.input_text('Введите номер типа протокола:\n1.Стартовый.\n2.Командный.\n3.Личный.\n>>>')
                 pos_mark = gui.input_text('Включить только записи содержащие метку>>>')
                 neg_mark = gui.input_text('Исключить записи содержащие метку>>>')
-                if(r_type == '1'):
-                    report.new_report(main_gui.table, r_type, pos_mark, neg_mark)
+                report.new_report(main_gui.table, r_type, pos_mark, neg_mark)
                     
 
 
