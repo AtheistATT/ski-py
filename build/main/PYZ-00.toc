@@ -1404,6 +1404,7 @@
    'PYMODULE'),
   ('quopri', '/usr/lib/python3.13/quopri.py', 'PYMODULE'),
   ('random', '/usr/lib/python3.13/random.py', 'PYMODULE'),
+  ('report', '/home/atheist/ski-py/report.py', 'PYMODULE'),
   ('rich',
    '/home/atheist/ski-py/venv/lib/python3.13/site-packages/rich/__init__.py',
    'PYMODULE'),
